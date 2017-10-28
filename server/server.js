@@ -1,22 +1,24 @@
-const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
+require('./config/config');
 
-const cors = require('cors')
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const express = require('express');
+// const mongoose = require('mongoose');
+const path = require('path');
 
-const mongoose = require('mongoose')
-mongoose.connect(process.env.MLAB_URI || 'mongodb://localhost/exercise-track' )
+const app = express();
+const {mongoose} = require('./db/mongoose');
+const publicPath = path.join(__dirname, '../public');
 
-app.use(cors())
+// mongoose.connect(process.env.MLAB_URI || 'mongodb://localhost/exercise-track' );
 
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
+app.use(cors());
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 
-app.use(express.static('public'))
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/views/index.html')
-});
+app.use(express.static(publicPath));
 
 
 // Not found middleware
