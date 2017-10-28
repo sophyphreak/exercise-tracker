@@ -34,10 +34,19 @@ app.post('/api/exercise/new-user', async (req, res) => {
   };
 });
 
+
+
 app.post('/api/exercise/add', async (req, res) => {
   try {
     const body = _.pick(req.body, ['userId', 'description', 'duration', 'date']);
-    
+    const user = await User.findOne({
+      _id: body.userId
+    });
+    if (!user) {
+      return res.status(404).send('id not found');
+    };
+    const exercise = new Exercise(body)// Is this right?
+    // Not finished
   } catch (e) {
     res.status(400).send(e);
   };
