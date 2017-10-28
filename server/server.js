@@ -4,6 +4,7 @@ const _ = require('lodash');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
+const moment = require('moment');
 // const mongoose = require('mongoose');
 const path = require('path');
 
@@ -30,8 +31,16 @@ app.post('/api/exercise/new-user', async (req, res) => {
     res.send(user);
   } catch (e) {
     res.status(400).send(e);
-  }
+  };
+});
 
+app.post('/api/exercise/add', async (req, res) => {
+  try {
+    const body = _.pick(req.body, ['userId', 'description', 'duration', 'date']);
+    
+  } catch (e) {
+    res.status(400).send(e);
+  };
 });
 
 // Not found middleware
