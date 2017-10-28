@@ -1,5 +1,6 @@
 require('./config/config');
 
+const _ = require('lodash');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
@@ -7,6 +8,8 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
+const {Exercise} = require('./models/exercise');
+const {User} = require('./models/user');
 const {mongoose} = require('./db/mongoose');
 const publicPath = path.join(__dirname, '../public');
 
@@ -19,10 +22,22 @@ app.use(bodyParser.json());
 
 app.use(express.static(publicPath));
 
+app.post('/api/exercise/new-user', async (req, res) => {
+  try {
+    const body = _.pick(req.body, ['username']);
+    const user = new User(body);
+    await user.save();
+    res.send(user);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+
+});
+
 // Not found middleware
 app.use((req, res, next) => {
   return next({status: 404, message: 'not found'})
-})
+});
 
 // Error Handling middleware
 app.use((err, req, res, next) => {
