@@ -34,7 +34,14 @@ app.post('/api/exercise/new-user', async (req, res) => {
   };
 });
 
-
+app.get('/api/exercise/users', async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.send({users});
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
 
 app.post('/api/exercise/add', async (req, res) => {
   try {
