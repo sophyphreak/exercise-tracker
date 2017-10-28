@@ -1,6 +1,7 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const moment = require('moment');
 
-var Exercise = mongoose.model('Exercise', {
+const Exercise = mongoose.model('Exercise', {
     userId: {
         type: String,
         required: true,
@@ -19,7 +20,8 @@ var Exercise = mongoose.model('Exercise', {
         min: 1
     },
     date: {
-        type: Number
+        type: Number,
+        default: moment().valueOf()
     }
 });
 
