@@ -52,8 +52,9 @@ app.post('/api/exercise/add', async (req, res) => {
     if (!user) {
       return res.status(404).send('id not found');
     };
-    const exercise = new Exercise(body)// Is this right?
-    // Not finished
+    const exercise = new Exercise(body)
+    await exercise.save();
+    res.send(exercise);
   } catch (e) {
     res.status(400).send(e);
   };
