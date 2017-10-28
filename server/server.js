@@ -43,6 +43,9 @@ app.get('/api/exercise/users', async (req, res) => {
   }
 });
 
+// Problems: 
+// - 'date' is null when it is not included
+// - 'date' when included throws an error. Need to convert to usable form with moment
 app.post('/api/exercise/add', async (req, res) => {
   try {
     const body = _.pick(req.body, ['userId', 'description', 'duration', 'date']);
