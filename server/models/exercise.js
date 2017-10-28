@@ -2,8 +2,10 @@ var mongoose = require('mongoose');
 
 var Exercise = mongoose.model('Exercise', {
     userId: {
-        type: Number,
-        required: true
+        type: String,
+        required: true,
+        minlength: 1,
+        trim: true
     },
     description: {
         type: String,
