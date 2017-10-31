@@ -39,9 +39,15 @@ describe('POST /api/exercise/new-user', () => {
             });
     });
 
-    // it('should fail to create a new user with invalid data', (done) => {
+    it('should fail to create a new user with invalid data', (done) => {
+        const username = '';
 
-    // });
+        request(app)
+            .post('/api/exercise/new-user')
+            .send({username})
+            .expect(400)
+            .end(done);
+    });
 });
 
 // describe('GET /api/exercise/users', () => {
