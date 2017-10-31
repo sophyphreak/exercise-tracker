@@ -123,4 +123,21 @@ describe('POST /api/exercise/add', () => {
                 }
             });
     });
+
+    it('should return an error for invalid exercise inputs', (done) => {
+        const newExercise = {
+            userId: "59f81a4befb50c535cdc31e5",
+            description: "",
+            duration: "20"
+        }
+
+        request(app)
+            .post('/api/exercise/add')
+            .send(newExercise)
+            .expect(400)
+            .expect((res) => {
+                expect(res.body).toBeFalsy();
+            })
+            .end(done);
+    });
 });
