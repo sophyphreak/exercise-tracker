@@ -12,8 +12,6 @@ I can get an array of all users by getting api/exercise/users with the same info
 
 I can add an exercise to any user by posting form data userId(_id), description, duration, and optionally date to /api/exercise/add. If no date supplied it will use current date. App will return the user object with the exercise fields added.
 
-#### In progress:
-
 I can retrieve a full exercise log of any user by getting /api/exercise/log with a parameter of userId(_id). App will return the user object with added array log and count (total exercise count).
 
 #### Not started:
