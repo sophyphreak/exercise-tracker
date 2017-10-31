@@ -19,7 +19,7 @@ const exercises = [{
     userId: userOneId,
     description: 'Went for a walk',
     duration: 20,
-    date: moment(2017-9-10).valueOf()
+    date: moment('2017-9-10').valueOf()
 }, {
     _id: new ObjectID(),
     userId: userTwoId,
