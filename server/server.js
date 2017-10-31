@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
 const moment = require('moment');
-// const mongoose = require('mongoose');
 const path = require('path');
 
 const app = express();
@@ -13,8 +12,6 @@ const {Exercise} = require('./models/exercise');
 const {User} = require('./models/user');
 const {mongoose} = require('./db/mongoose');
 const publicPath = path.join(__dirname, '../public');
-
-// mongoose.connect(process.env.MLAB_URI || 'mongodb://localhost/exercise-track' );
 
 app.use(cors());
 
