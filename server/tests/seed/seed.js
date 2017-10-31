@@ -25,7 +25,19 @@ const exercises = [{
     userId: userTwoId,
     description: 'Did some calligraphy',
     duration: 10,
-    date: moment().valueOf()
+    date: moment().format("YYYY-M-D")
+}, {
+    _id: new ObjectID(),
+    userId: userOneId,
+    description: 'Went fishing',
+    duration: 60,
+    date: moment('2017-10-9').format("YYYY-M-D")
+}, {
+    _id: new ObjectID(),
+    userId: userOneId,
+    description: 'Planted potatoes',
+    duration: 20,
+    date: moment('2017-8-9').format("YYYY-M-D")
 }];
 
 const populateExercises = async () => {
