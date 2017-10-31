@@ -82,20 +82,23 @@ describe('POST /api/exercise/add', () => {
                 expect(res.body.duration).toBe(parseInt(newExercise.duration));
                 expect(res.body.date).toBe(newExercise.date);
             })
-            .end(done);
-            // .end( async (err, res) => {
-            //     if (err) {
-            //         done(err);
-            //     }
+            .end( async (err, res) => {
+                if (err) {
+                    done(err);
+                }
 
-            //     try {
-            //         const exercise = await Exercise.find({description: newExercise.description});
-            //         expect(exercise.length).toBe(1);
-            //         expect(exercise[0]).toMatchObject(newExercise);
-            //     } catch (e) {
-            //         done(e);
-            //     }
-            // });
+                try {
+                    const exercise = await Exercise.find({description: newExercise.description});
+                    expect(exercise.length).toBe(1);
+                    expect(exercise[0].userId).toBe(newExercise.userId);
+                    expect(exercise[0].description).toBe(newExercise.description);
+                    expect(exercise[0].duration).toBe(parseInt(newExercise.duration));
+                    expect(exercise[0].date).toBe(newExercise.date);
+                    done();
+                } catch (e) {
+                    done(e);
+                }
+            });
     });
 
     // it('should add an exercise with a date', (done) => {
