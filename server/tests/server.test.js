@@ -65,7 +65,7 @@ describe('GET /api/exercise/users', () => {
 describe('POST /api/exercise/add', () => {
     it('should add an exercise with the given date', (done) => {
         const newExercise = {
-            userId: "sophyphreak",
+            userId: "59f81a4befb50c535cdc31e4",
             description: "Went swimming",
             duration: "30",
             date: "2017-10-1"
@@ -87,6 +87,37 @@ describe('POST /api/exercise/add', () => {
                     const exercise = await Exercise.find({description: newExercise.description});
                     expect(exercise.length).toBe(1);
                     expect(exercise[0]).toMatchObject(newExercise);
+                } catch (e) {
+                    done(e);
+                }
+            });
+    });
+
+    it('should add an exercise with a date', (done) => {
+        const newExercise = {
+            userId: "59f81a4befb50c535cdc31e5",
+            description: "Went jogging",
+            duration: "20"
+        }
+
+        request(app)
+            .post('/api/exercise/add')
+            .send(newExercise)
+            .expect(200)
+            .expect((res) => {
+                expect(res.body).toMatchObject(newExercise);
+                expect(res.body.date).toBeTruthy();
+            })
+            .end(async (err, res) => {
+                if (err) {
+                    done(err);
+                }
+
+                try {
+                    const exercise = await Exercise.find({ description: newExercise.description });
+                    expect(exercise.length).toBe(1);
+                    expect(exercise[0]).toMatchObject(newExercise);
+                    expect(exercise[0].date).toBeTruthy();
                 } catch (e) {
                     done(e);
                 }
