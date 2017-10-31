@@ -20,8 +20,7 @@ const Exercise = mongoose.model('Exercise', {
         min: 1
     },
     date: {
-        type: Number,
-        default: moment().valueOf()
+        type: Number
     }
 });
 
