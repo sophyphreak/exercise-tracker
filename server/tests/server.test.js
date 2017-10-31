@@ -50,11 +50,17 @@ describe('POST /api/exercise/new-user', () => {
     });
 });
 
-// describe('GET /api/exercise/users', () => {
-//     it('should get a list of users', (done) => {
-
-//     });
-// });
+describe('GET /api/exercise/users', () => {
+    it('should get a list of users', (done) => {
+        request(app)
+            .get('/api/exercise/users')
+            .expect(200)
+            .expect((res) => {
+                expect(res.body.length).toBe(2);
+            })
+            .end(done);
+    });
+});
 
 // describe('POST /api/exercise/add', () => {
 //     it('should create a new exercise with default date', (done) => {
