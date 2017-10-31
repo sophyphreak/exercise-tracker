@@ -173,4 +173,12 @@ describe('GET /api/exercises/log/:userId', () => {
             })
             .end(done);
     });
+
+    it('should send 404 for invalid Id param', (done) => {
+        const userId = 'asdfdsfadfas';
+        request(app)
+            .get(`/api/exercise/log/${userId}`)
+            .expect(404)
+            .end(done)
+    });
 });
