@@ -4,8 +4,8 @@ const moment = require('moment');
 const { User } = require('./../../models/user');
 const { Exercise } = require('./../../models/exercise');
 
-const userOneId = new ObjectID();
-const userTwoId = new ObjectID();
+const userOneId = new ObjectID("59f86d76ee571c33c0357f33");
+const userTwoId = new ObjectID("59f86d76ee571c33c0357f34");
 const users = [{
     _id: userOneId,
     username: 'sophyphreak'

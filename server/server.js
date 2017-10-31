@@ -56,7 +56,7 @@ app.post('/api/exercise/add', async (req, res) => {
       return res.status(404).send('id not found');
     };
     if (!body.date) {
-      body.date = moment().valueOf();
+      body.date = moment().format("YYYY-M-D");
     } else {
       body.date = moment(body.date).valueOf();
     }
