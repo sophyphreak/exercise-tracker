@@ -19,7 +19,7 @@ const exercises = [{
     userId: userOneId,
     description: 'Went for a walk',
     duration: 20,
-    date: moment('2017-9-10').valueOf()
+    date: moment('2017-9-10').format("YYYY-M-D")
 }, {
     _id: new ObjectID(),
     userId: userTwoId,
@@ -38,6 +38,24 @@ const exercises = [{
     description: 'Planted potatoes',
     duration: 20,
     date: moment('2017-8-9').format("YYYY-M-D")
+}, {
+    _id: new ObjectID(),
+    userId: userOneId,
+    description: 'Danced in a circle',
+    duration: 17,
+    date: moment('2000-8-9').format("YYYY-M-D")
+}, {
+    _id: new ObjectID(),
+    userId: userOneId,
+    description: 'Did the dishes',
+    duration: 17.5,
+    date: moment('1999-8-9').format("YYYY-M-D")
+}, {
+    _id: new ObjectID(),
+    userId: userOneId,
+    description: 'Did the dishes',
+    duration: 1111,
+    date: moment('1970-8-9').format("YYYY-M-D")
 }];
 
 const populateExercises = async () => {
