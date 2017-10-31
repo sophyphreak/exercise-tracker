@@ -71,18 +71,37 @@ app.post('/api/exercise/add', async (req, res) => {
 app.get('/api/exercise/log', async (req, res) => {
   try {
     const userId = req.query.userId;
+    let from = req.query.from;
+    let to = req.query.to;
+    const limit = req.query.limit;
+    if (from) from = moment(from);
+    if (to) to = moment(to);
+
     const user = await User.findById(userId);
       if (!user) {
         res.status(404).send('User not found');
       }
-    const exercises = await Exercise.find({userId});
+    let exercises = await Exercise.find({userId});
     const count = exercises.length;
-    const fullLog = {
+
+    exercises = exercises.filter((exercise) => {
+      let date = exercise.date.slice();
+      date = moment(date);
+      if (from && date < from) return false;
+      if (to && to < date) return false;
+      return true;
+    });
+
+    if (limit) {
+      exercises = exercises.slice(0, limit);
+    };
+
+    const log = {
       user,
       exercises,
       count
     };
-    res.send(fullLog);
+    res.send(log);
   } catch(e) {
     res.status(400).send(e);
   };
