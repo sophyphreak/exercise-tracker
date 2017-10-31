@@ -58,7 +58,7 @@ app.post('/api/exercise/add', async (req, res) => {
     if (!body.date) {
       body.date = moment().format("YYYY-M-D");
     } else {
-      body.date = moment(body.date).valueOf();
+      body.date = moment(body.date).format("YYYY-M-D");
     }
     const exercise = new Exercise(body)
     const doc = await exercise.save();

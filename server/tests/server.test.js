@@ -80,7 +80,7 @@ describe('POST /api/exercise/add', () => {
                 expect(res.body.userId).toBe(newExercise.userId);
                 expect(res.body.description).toBe(newExercise.description);
                 expect(res.body.duration).toBe(parseInt(newExercise.duration));
-                expect(res.body.date).toBe(moment(newExercise.date).valueOf());
+                expect(res.body.date).toBe(newExercise.date);
             })
             .end(done);
             // .end( async (err, res) => {
