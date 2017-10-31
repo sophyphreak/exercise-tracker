@@ -7,10 +7,10 @@ const { ObjectID } = require('mongodb');
 const { app } = require('./../server');
 const { Exercise } = require('./../models/exercise');
 const { User } = require('./../models/user');
-// const { todos, populateTodos, users, populateUsers } = require('./seed/seed');
+const { exercises, populateExercises, users, populateUsers } = require('./seed/seed');
 
-// beforeEach(populateUsers);
-// beforeEach(populateExercises);
+beforeEach(populateUsers);
+beforeEach(populateExercises);
 
 describe('POST /api/exercise/new-user', () => {
     it('should create a new user', (done) => {
