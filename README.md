@@ -10,8 +10,6 @@ I can create a user by posting form data username to /api/exercise/new-user and 
 
 I can get an array of all users by getting api/exercise/users with the same info as when creating a user.
 
-#### In the process:
-
 I can add an exercise to any user by posting form data userId(_id), description, duration, and optionally date to /api/exercise/add. If no date supplied it will use current date. App will return the user object with the exercise fields added.
 
 #### Not started:
