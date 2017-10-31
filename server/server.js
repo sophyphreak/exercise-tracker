@@ -75,13 +75,13 @@ return the user object with added array log and count
 (total exercise count).
 */
 
-app.get('/api/exercise/log', async (req, res) => {
+app.get('/api/exercise/log/:userId', async (req, res) => {
   try {
-    const userId = req.body.userId;
+    const userId = req.params.userId;
     if (!userId) {
       res.status(404).send('User not found');
     }
-    const user = await User.findById(userId)[0];
+    const user = await User.findById(userId);
     const exercises = await Exercise.find({userId});
     const count = exercises.length;
     const fullLog = {

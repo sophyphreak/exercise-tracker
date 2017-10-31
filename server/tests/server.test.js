@@ -157,3 +157,20 @@ describe('POST /api/exercise/add', () => {
             });
     });
 });
+
+describe('GET /api/exercises/log/:userId', () => {
+    it('should get a log of all exercises for one user', (done) => {
+        const userId = users[0]._id.toHexString();
+        request(app)
+            .get(`/api/exercise/log/${userId}`)
+            .expect(200)
+            .expect((res) => {
+                const result = res.body;
+                expect(result.user._id).toBe(userId);
+                expect(result.user.username).toBe(users[0].username);
+                expect(result.exercises.length).toBe(3);
+                expect(result.count).toBe(3);
+            })
+            .end(done);
+    });
+});
