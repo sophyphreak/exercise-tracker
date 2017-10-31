@@ -56,8 +56,9 @@ app.post('/api/exercise/add', async (req, res) => {
       return res.status(404).send('id not found');
     };
     const exercise = new Exercise(body)
-    await exercise.save();
-    res.send(exercise);
+    const doc = await exercise.save();
+    console.log(doc);
+    res.send(doc);
   } catch (e) {
     res.status(400).send(e);
   };

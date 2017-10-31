@@ -61,3 +61,35 @@ describe('GET /api/exercise/users', () => {
             .end(done);
     });
 });
+
+describe('POST /api/exercise/add', () => {
+    it('should add an exercise with the given date', (done) => {
+        const newExercise = {
+            userId: "sophyphreak",
+            description: "Went swimming",
+            duration: "30",
+            date: "2017-10-1"
+        }
+        
+        request(app)
+            .post('/api/exercise/add')
+            .send(newExercise)
+            .expect(200)
+            .expect((res) => {
+                expect(res.body).toMatchObject(newExercise);
+            })
+            .end( async (err, res) => {
+                if (err) {
+                    done(err);
+                }
+
+                try {
+                    const exercise = await Exercise.find({description: newExercise.description});
+                    expect(exercise.length).toBe(1);
+                    expect(exercise[0]).toMatchObject(newExercise);
+                } catch (e) {
+                    done(e);
+                }
+            });
+    });
+});
