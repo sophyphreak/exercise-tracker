@@ -18,6 +18,16 @@ I can retrieve a full exercise log of any user by getting /api/exercise/log with
 
 I can retrieve part of the log of any user by also passing along optional parameters of from & to or limit. (Date format yyyy-mm-dd, limit = int)
 
+--
+
+GET users's exercise log: GET /api/exercise/log?{userId}[&from][&to][&limit]
+
+{ } = required, [ ] = optional
+
+from, to = dates (yyyy-mm-dd); limit = number
+
+--
+
 # Also:
 
 Need to deploy to heroku, create mLab

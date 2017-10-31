@@ -162,7 +162,7 @@ describe('GET /api/exercises/log/:userId', () => {
     it('should get a log of all exercises for one user', (done) => {
         const userId = users[0]._id.toHexString();
         request(app)
-            .get(`/api/exercise/log/${userId}`)
+            .get(`/api/exercise/log?userId=${userId}`)
             .expect(200)
             .expect((res) => {
                 const result = res.body;
@@ -177,7 +177,7 @@ describe('GET /api/exercises/log/:userId', () => {
     it('should send 404 for invalid Id param', (done) => {
         const userId = 'asdfdsfadfas';
         request(app)
-            .get(`/api/exercise/log/${userId}`)
+            .get(`/api/exercise/log?userId=${userId}`)
             .expect(404)
             .end(done)
     });
