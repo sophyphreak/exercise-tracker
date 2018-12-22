@@ -1,41 +1,52 @@
 {
-	"name": "fcc-exercise-tracker",
-	"version": "0.1.0",
-	"description": "A REST API project, part of Free Code Camp's curriculum",
-	"main": "server.js",
-	"scripts": {
-		"start": "node server/server.js",
-		"test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha server/**/*.test.js",
-		"test-watch": "nodemon --exec \"npm test\""
-	},
-	"dependencies": {
-		"body-parser": "^1.15.2",
-		"cors": "^2.8.1",
-		"dotenv": "^6.2.0",
-		"express": "^4.14.0",
-		"lodash": "^4.17.4",
-		"moment": "^2.19.1",
-		"mongodb": "^2.2.14",
-		"mongoose": "^4.7.2",
-		"path": "^0.12.7",
-		"shortid": "^2.2.6"
-	},
-	"engines": {
-		"node": "7.6.0"
-	},
-	"repository": {
-		"url": "https://gomix.com/#!/project/welcome-project"
-	},
-	"license": "MIT",
-	"keywords": [
-		"node",
-		"gomix",
-		"express"
-	],
-	"devDependencies": {
-		"expect": "^21.2.1",
-		"mocha": "^3.0.2",
-		"nodemon": "^1.12.1",
-		"supertest": "^3.0.0"
-	}
+  "name": "fcc-exercise-tracker",
+  "version": "0.1.0",
+  "description": "A REST API project, part of Free Code Camp's curriculum",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha server/**/*.test.js",
+    "test-watch": "nodemon --exec \"npm test\""
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "dotenv": "^6.2.0",
+    "express": "^4.14.0",
+    "lodash": "^4.17.4",
+    "moment": "^2.19.1",
+    "mongodb": "^2.2.14",
+    "mongoose": "^4.7.2",
+    "path": "^0.12.7",
+    "shortid": "^2.2.6"
+  },
+  "repository": {
+    "url": "https://gomix.com/#!/project/welcome-project"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "gomix",
+    "express"
+  ],
+  "devDependencies": {
+    "expect": "^21.2.1",
+    "husky": "^1.2.1",
+    "lint-staged": "^8.1.0",
+    "mocha": "^3.0.2",
+    "nodemon": "^1.12.1",
+    "prettier": "^1.15.3",
+    "supertest": "^3.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
 }
