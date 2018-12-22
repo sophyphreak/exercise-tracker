@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const moment = require('moment');
 
 const Exercise = mongoose.model('Exercise', {
   userId: {
